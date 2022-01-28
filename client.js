@@ -1,7 +1,7 @@
 $(function(){
     
     // Configuration
-    var url = 'https://eg1001-339610.as.r.appspot.com:8080/'; // URL of your webserver
+    var url = '192.168.1.9:8080'; // URL of your webserver
     var line_thickness = 7;
     var line_colour = "blue";
 
