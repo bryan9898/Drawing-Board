@@ -22,12 +22,25 @@ body {
 #paper, #paper3,#paper4,#paper5,#paper6{
     background-color: #ffffff;
     border-radius: 6px;
+    touch-action: none;
 }
 #paper2 {
     background-color: #ffffff;
     border-radius: 6px;
+    touch-action: none;
 }
 
+.button { 
+    background-color: #f5696e;
+    border: none;
+    color: white;
+    height: 30px;
+    width:150px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
 
 #cursors {
     position: relative;

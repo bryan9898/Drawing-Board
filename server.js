@@ -27,4 +27,27 @@ io.sockets.on('connection', function (socket) {
 	socket.on('mousemove', function (data) {
 		socket.broadcast.emit('moving', data); // Broadcasts event to everyone except originating client
 	});
+	socket.on('send message', function(data){
+        io.sockets.emit('new message', data);
+    });
+
+	 socket.on('send message2', function(data){
+        io.sockets.emit('new message2', data);
+    });
+
+	socket.on('send message3', function(data){
+        io.sockets.emit('new message3', data);
+    });
+
+	socket.on('send message4', function(data){
+        io.sockets.emit('new message4', data);
+    });
+
+	socket.on('send message5', function(data){
+        io.sockets.emit('new message5', data);
+    });
+
+	socket.on('send message6', function(data){
+        io.sockets.emit('new message6', data);
+    });
 });
