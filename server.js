@@ -27,11 +27,53 @@ io.sockets.on('connection', function (socket) {
 	socket.on('mousemove', function (data) {
 		socket.broadcast.emit('moving', data); // Broadcasts event to everyone except originating client
 	});
+
+	socket.on('clear',function (data) {
+		socket.broadcast.emit('clear', data); // Broadcasts event to everyone except originating client
+	});
+	socket.on('clear2',function (data) {
+		socket.broadcast.emit('clear2', data); // Broadcasts event to everyone except originating client
+	});
+	socket.on('clear3',function (data) {
+		socket.broadcast.emit('clear3', data); // Broadcasts event to everyone except originating client
+	});
+	socket.on('clear4',function (data) {-
+		socket.broadcast.emit('clear4', data); // Broadcasts event to everyone except originating client
+	});
+	socket.on('clear5',function (data) {
+		socket.broadcast.emit('clear5', data); // Broadcasts event to everyone except originating client
+	});
+	socket.on('clear6',function (data) {
+		socket.broadcast.emit('clear6', data); // Broadcasts event to everyone except originating client
+	});
+
 	socket.on('send message', function(data){
         io.sockets.emit('new message', data);
     });
 
-	 socket.on('send message2', function(data){
+	socket.on('voting', function(data){
+		socket.broadcast.emit('voting', data);
+    });
+
+	socket.on('voting2', function(data){
+        socket.broadcast.emit('voting2', data);
+    });
+
+	socket.on('voting3', function(data){
+        socket.broadcast.emit('voting3', data);
+    });
+
+	socket.on('voting4', function(data){
+        socket.broadcast.emit('voting4', data);
+    });
+	socket.on('voting5', function(data){
+        socket.broadcast.emit('voting5', data);
+    });
+	socket.on('voting6', function(data){
+        socket.broadcast.emit('voting6', data);
+    });
+
+	socket.on('send message2', function(data){
         io.sockets.emit('new message2', data);
     });
 

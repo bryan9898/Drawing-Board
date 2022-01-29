@@ -1,7 +1,7 @@
 $(function(){
     
     // Configuration
-    var url = 'https://35.197.146.101:8080'; // URL of your webserver
+    var url = '35.197.146.101:8080'; // URL of your webserver
     //var url = '192.168.1.9:8080';
     var line_thickness = 4;
     var line_colour = "blue";
@@ -83,7 +83,7 @@ $(function(){
 
     function printMousePos(event) {
         console.log("clientX: " + event.clientX +" - clientY: " + event.clientY);
-      }
+    }
       
       document.addEventListener("click", printMousePos);
 
@@ -440,169 +440,181 @@ $(function(){
     // On touch move
     canvas.on('touchmove', function(e) {
         e.preventDefault();
-        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+        if(joining1 == true){
+            var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
 
-        // Emit the event to the server
-        if ($.now() - lastEmit > 10)
-        {
-            socket.emit('mousemove', {
-                'x': touch.pageX,
-                'y': touch.pageY,
-                'startX': prev.x,
-                'startY': prev.y,
-                'touch': true,
-                'drawing': drawing,
-                'id': id
-            });
-            lastEmit = $.now();
-        }
+            // Emit the event to the server
+            if ($.now() - lastEmit > 10)
+            {
+                socket.emit('mousemove', {
+                    'x': touch.pageX,
+                    'y': touch.pageY,
+                    'startX': prev.x,
+                    'startY': prev.y,
+                    'touch': true,
+                    'drawing': drawing,
+                    'id': id
+                });
+                lastEmit = $.now();
+            }
 
-        // Draw a line for the current user's movement
-        if (drawing)
-        {
-            drawLine(prev.x, prev.y, touch.pageX, touch.pageY);
-            prev.x = touch.pageX;
-            prev.y = touch.pageY;
+            // Draw a line for the current user's movement
+            if (drawing)
+            {
+                drawLine(prev.x, prev.y, touch.pageX, touch.pageY);
+                prev.x = touch.pageX;
+                prev.y = touch.pageY;
+            }
         }
     });
 
     canvas2.on('touchmove', function(e) {
         e.preventDefault();
-        var touch2 = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-      
-        // Emit the event to the server
-        if ($.now() - lastEmit2 > 10)
-        {
-            socket.emit('mousemove', {
-                'x': touch2.pageX,
-                'y': touch2.pageY,
-                'startX': prev2.x,
-                'startY': prev2.y,
-                'touch': true,
-                'drawing': drawing2,
-                'id': id2
-            });
-            lastEmit2 = $.now();
-        }
+        if(joining2 == true){
+            var touch2 = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+        
+            // Emit the event to the server
+            if ($.now() - lastEmit2 > 10)
+            {
+                socket.emit('mousemove', {
+                    'x': touch2.pageX,
+                    'y': touch2.pageY,
+                    'startX': prev2.x,
+                    'startY': prev2.y,
+                    'touch': true,
+                    'drawing': drawing2,
+                    'id': id2
+                });
+                lastEmit2 = $.now();
+            }
 
-        // Draw a line for the current user's movement
-        if (drawing2)
-        {
-            drawLine2(prev2.x, prev2.y, touch2.pageX, touch2.pageY);
-            prev2.x = touch2.pageX;
-            prev2.y = touch2.pageY;
+            // Draw a line for the current user's movement
+            if (drawing2)
+            {
+                drawLine2(prev2.x, prev2.y, touch2.pageX, touch2.pageY);
+                prev2.x = touch2.pageX;
+                prev2.y = touch2.pageY;
+            }
         }
     });
 
     canvas3.on('touchmove', function(e) {
         e.preventDefault();
-        var touch3 = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-      
-        // Emit the event to the server
-        if ($.now() - lastEmit3 > 10)
-        {
-            socket.emit('mousemove', {
-                'x': touch3.pageX,
-                'y': touch3.pageY,
-                'startX': prev3.x,
-                'startY': prev3.y,
-                'touch': true,
-                'drawing': drawing3,
-                'id': id3
-            });
-            lastEmit3 = $.now();
-        }
+        if(joining3 == true){
+            var touch3 = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+        
+            // Emit the event to the server
+            if ($.now() - lastEmit3 > 10)
+            {
+                socket.emit('mousemove', {
+                    'x': touch3.pageX,
+                    'y': touch3.pageY,
+                    'startX': prev3.x,
+                    'startY': prev3.y,
+                    'touch': true,
+                    'drawing': drawing3,
+                    'id': id3
+                });
+                lastEmit3 = $.now();
+            }
 
-        // Draw a line for the current user's movement
-        if (drawing3)
-        {
-            drawLine3(prev3.x, prev3.y, touch3.pageX, touch3.pageY);
-            prev3.x = touch3.pageX;
-            prev3.y = touch3.pageY;
+            // Draw a line for the current user's movement
+            if (drawing3)
+            {
+                drawLine3(prev3.x, prev3.y, touch3.pageX, touch3.pageY);
+                prev3.x = touch3.pageX;
+                prev3.y = touch3.pageY;
+            }
         }
     });
 
     canvas4.on('touchmove', function(e) {
         e.preventDefault();
-        var touch4 = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-      
-        // Emit the event to the server
-        if ($.now() - lastEmit4 > 10)
-        {
-            socket.emit('mousemove', {
-                'x': touch4.pageX,
-                'y': touch4.pageY,
-                'startX': prev4.x,
-                'startY': prev4.y,
-                'touch': true,
-                'drawing': drawing4,
-                'id': id4
-            });
-            lastEmit4 = $.now();
-        }
+        if(joining4 == true){
+            var touch4 = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+        
+            // Emit the event to the server
+            if ($.now() - lastEmit4 > 10)
+            {
+                socket.emit('mousemove', {
+                    'x': touch4.pageX,
+                    'y': touch4.pageY,
+                    'startX': prev4.x,
+                    'startY': prev4.y,
+                    'touch': true,
+                    'drawing': drawing4,
+                    'id': id4
+                });
+                lastEmit4 = $.now();
+            }
 
-        // Draw a line for the current user's movement
-        if (drawing4)
-        {
-            drawLine4(prev4.x, prev4.y, touch4.pageX, touch4.pageY);
-            prev4.x = touch4.pageX;
-            prev4.y = touch4.pageY;
+            // Draw a line for the current user's movement
+            if (drawing4)
+            {
+                drawLine4(prev4.x, prev4.y, touch4.pageX, touch4.pageY);
+                prev4.x = touch4.pageX;
+                prev4.y = touch4.pageY;
+            }
         }
     });
 
     canvas5.on('touchmove', function(e) {
         e.preventDefault();
-        var touch5 = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-      
-        // Emit the event to the server
-        if ($.now() - lastEmit5 > 10)
-        {
-            socket.emit('mousemove', {
-                'x': touch5.pageX,
-                'y': touch5.pageY,
-                'startX': prev5.x,
-                'startY': prev5.y,
-                'touch': true,
-                'drawing': drawing5,
-                'id': id5
-            });
-            lastEmit5 = $.now();
-        }
+        if(joining5 == true){
+            var touch5 = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+        
+            // Emit the event to the server
+            if ($.now() - lastEmit5 > 10)
+            {
+                socket.emit('mousemove', {
+                    'x': touch5.pageX,
+                    'y': touch5.pageY,
+                    'startX': prev5.x,
+                    'startY': prev5.y,
+                    'touch': true,
+                    'drawing': drawing5,
+                    'id': id5
+                });
+                lastEmit5 = $.now();
+            }
 
-        // Draw a line for the current user's movement
-        if (drawing5)
-        {
-            drawLine5(prev5.x, prev5.y, touch5.pageX, touch5.pageY);
-            prev5.x = touch5.pageX;
-            prev5.y = touch5.pageY;
+            // Draw a line for the current user's movement
+            if (drawing5)
+            {
+                drawLine5(prev5.x, prev5.y, touch5.pageX, touch5.pageY);
+                prev5.x = touch5.pageX;
+                prev5.y = touch5.pageY;
+            }
         }
     });
 
     canvas6.on('touchmove', function(e) {
         e.preventDefault();
-        var touch6 = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-      
-        // Emit the event to the server
-        if ($.now() - lastEmit6 > 10)
-        {
-            socket.emit('mousemove', {
-                'x': touch6.pageX,
-                'y': touch6.pageY,
-                'startX': prev6.x,
-                'startY': prev6.y,
-                'touch': true,
-                'drawing': drawing6,
-                'id': id6
-            });
-            lastEmit6 = $.now();
-        }
+        if(joining6 == true){
+            var touch6 = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+        
+            // Emit the event to the server
+            if ($.now() - lastEmit6 > 10)
+            {
+                socket.emit('mousemove', {
+                    'x': touch6.pageX,
+                    'y': touch6.pageY,
+                    'startX': prev6.x,
+                    'startY': prev6.y,
+                    'touch': true,
+                    'drawing': drawing6,
+                    'id': id6
+                });
+                lastEmit6 = $.now();
+            }
 
-        // Draw a line for the current user's movement
-        if (drawing6)
-        {
-            drawLine6(prev6.x, prev6.y, touch6.pageX, touch6.pageY);
-            prev6.x = touch6.pageX;
-            prev6.y = touch6.pageY;
+            // Draw a line for the current user's movement
+            if (drawing6)
+            {
+                drawLine6(prev6.x, prev6.y, touch6.pageX, touch6.pageY);
+                prev6.x = touch6.pageX;
+                prev6.y = touch6.pageY;
+            }
         }
     });
 
@@ -659,9 +671,34 @@ $(function(){
         if(joining1 == true){
             if (confirm("Really clear group 1?") == true) {
                 ctx.clearRect(0, 0, 300, 400);
+                socket.emit('clear',ctx);
             } 
         }
     }
+
+    socket.on('clear', function(e){
+        ctx.clearRect(0, 0, 300, 400);
+    });
+
+    socket.on('clear2', function(e){
+        ctx2.clearRect(0, 0, 300, 400);
+    })
+
+    socket.on('clear3', function(e){
+        ctx3.clearRect(0, 0, 300, 400);
+    })
+    socket.on('clear4', function(e){
+        ctx4.clearRect(0, 0, 300, 400);
+    })
+    socket.on('clear5', function(e){
+        ctx5.clearRect(0, 0, 300, 400);
+    })
+    socket.on('clear6', function(e){
+        ctx6.clearRect(0, 0, 300, 400);
+    })
+
+
+
 
     document.getElementById("clear2").addEventListener("click", clear2);
 
@@ -669,9 +706,13 @@ $(function(){
         if(joining2 == true){
             if (confirm("Really clear group 2?") == true) {
                 ctx2.clearRect(0, 0, 300, 400);
+                socket.emit('clear2',ctx2);
             } 
         }
     }
+
+    
+
 
     document.getElementById("clear3").addEventListener("click", clear3);
 
@@ -679,9 +720,11 @@ $(function(){
         if(joining3 == true){
             if (confirm("Really clear group 3?") == true) {
                 ctx3.clearRect(0, 0, 300, 400);
+                socket.emit('clear3',ctx3);
             } 
         }
     }
+
 
     document.getElementById("clear4").addEventListener("click", clear4);
 
@@ -689,6 +732,7 @@ $(function(){
         if(joining4 == true){
             if (confirm("Really clear group 4?") == true) {
                 ctx4.clearRect(0, 0, 300, 400);
+                socket.emit('clear4',ctx4);
             } 
         }
     }
@@ -699,6 +743,7 @@ $(function(){
         if(joining5 == true){
             if (confirm("Really clear group 5?") == true) {
                 ctx5.clearRect(0, 0, 300, 400);
+                socket.emit('clear5',ctx5);
             } 
         }
     }
@@ -709,6 +754,7 @@ $(function(){
         if(joining6 == true){
             if (confirm("Really clear group 6?") == true) {
                 ctx6.clearRect(0, 0, 300, 400);
+                socket.emit('clear6',ctx6);
             } 
         }
     }
@@ -725,33 +771,39 @@ $(function(){
     function join1(){
         if(joining1 != true && joining2 != true && joining3 != true && joining4 != true && joining5 != true && joining6 != true){
             joining1 = true;
+            alert("Joined Grp 1");
         }
     }
 
     function join2(){
         if(joining1 != true && joining2 != true && joining3 != true && joining4 != true && joining5 != true && joining6 != true){
             joining2 = true;
+            alert("Joined Grp 2");
         }
     }
     
     function join3(){
         if(joining1 != true && joining2 != true && joining3 != true && joining4 != true && joining5 != true && joining6 != true){
             joining3 = true;
+            alert("Joined Grp 3");
         }
     }
     function join4(){
         if(joining1 != true && joining2 != true && joining3 != true && joining4 != true && joining5 != true && joining6 != true){
             joining4 = true;
+            alert("Joined Grp 4");
         }
     }
     function join5(){
         if(joining1 != true && joining2 != true && joining3 != true && joining4 != true && joining5 != true && joining6 != true){
             joining5 = true;
+            alert("Joined Grp 5");
         }
     }
     function join6(){
         if(joining1 != true && joining2 != true && joining3 != true && joining4 != true && joining5 != true && joining6 != true){
             joining6 = true;
+            alert("Joined Grp 6");
         }
     }
 
@@ -767,15 +819,71 @@ $(function(){
     function vote1(){
         if(joining1 != true && (joining2 == true || joining3 == true || joining4 == true || joining5 == true || joining6 == true)){
             totalVote1 += 1;
+            socket.emit('voting', totalVote1);
             document.getElementById("like1").innerHTML = totalVote1;
         } else {
             alert("Cannot vote without team/ vote for your own team");
         }
     }
 
+    socket.on('voting', function(data){
+        console.log("run");
+        if(data > totalVote1){
+            totalVote1 = data;
+        } else {
+            totalVote1 +=1;
+        }
+        
+        document.getElementById("like1").innerHTML = totalVote1;
+    });
+    socket.on('voting2', function(data){
+        if(data > totalVote2){
+            totalVote2 = data;
+        } else {
+            totalVote2 +=1;
+        }
+        document.getElementById("like2").innerHTML = totalVote2;
+    });
+
+    socket.on('voting3', function(data){
+        if(data > totalVote3){
+            totalVote3 = data;
+        } else {
+            totalVote3 +=1;
+        }
+        document.getElementById("like3").innerHTML = totalVote3;
+    });
+
+    socket.on('voting4', function(data){
+        if(data > totalVote4){
+            totalVote4 = data;
+        } else {
+            totalVote4 +=1;
+        }
+        document.getElementById("like4").innerHTML = data;
+    });
+
+    socket.on('voting5', function(data){
+        if(data > totalVote5){
+            totalVote5 = data;
+        } else {
+            totalVote5 +=1;
+        }
+        document.getElementById("like5").innerHTML = data;
+    });
+    socket.on('voting6', function(data){
+        if(data > totalVote6){
+            totalVote6 = data;
+        } else {
+            totalVote6 +=1;
+        }
+        document.getElementById("like6").innerHTML = data;
+    });
+
     function vote2(){
         if(joining2 != true && (joining6 == true || joining3 == true || joining4 == true || joining5 == true || joining1 == true)){
             totalVote2 += 1;
+            socket.emit('voting2', totalVote2);
             document.getElementById("like2").innerHTML = totalVote2;
         } else {
             alert("Cannot vote without team/ vote for your own team");
@@ -785,6 +893,7 @@ $(function(){
     function vote3(){
         if(joining3 != true && (joining2 == true || joining6 == true || joining4 == true || joining5 == true || joining1 == true)){
             totalVote3 += 1;
+            socket.emit('voting3', totalVote3);
             document.getElementById("like3").innerHTML = totalVote3;
         } else {
             alert("Cannot vote without team/ vote for your own team");
@@ -794,6 +903,7 @@ $(function(){
     function vote4(){
         if(joining4 != true && (joining2 == true || joining3 == true || joining6 == true || joining5 == true || joining1 == true)){
             totalVote4 += 1;
+            socket.emit('voting4', totalVote4);
             document.getElementById("like4").innerHTML = totalVote4;
         } else {
             alert("Cannot vote without team/ vote for your own team");
@@ -803,6 +913,7 @@ $(function(){
     function vote5(){
         if(joining5 != true && (joining2 == true || joining3 == true || joining4 == true || joining6 == true || joining1 == true)){
             totalVote5 += 1;
+            socket.emit('voting5', totalVote5);
             document.getElementById("like5").innerHTML = totalVote5;
         } else {
             alert("Cannot vote without team/ vote for your own team");
@@ -811,6 +922,7 @@ $(function(){
     function vote6(){
         if(joining6 != true && (joining2 == true || joining3 == true || joining4 == true || joining5 == true || joining1 == true)){
             totalVote6 += 1;
+            socket.emit('voting6', totalVote6);
             document.getElementById("like6").innerHTML = totalVote6;
         } else {
             alert("Cannot vote without team/ vote for your own team");
