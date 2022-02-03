@@ -13,6 +13,7 @@ $(function(){
     var joining4 = false;
     var joining5 = false;
     var joining6 = false;
+    var all = false;
 
     //vote var
     var totalVote1 = 0;
@@ -21,6 +22,31 @@ $(function(){
     var totalVote4 = 0;
     var totalVote5 = 0;
     var totalVote6 = 0;
+
+    document.getElementById("login").addEventListener("click", login);
+    function login(){
+        var pass = document.getElementById("pass").value;
+        pass = hashCode(pass);
+        console.log(pass);
+        console.log("admin");
+        if(pass == 1409613467){
+            joining1 = true;
+            joining2 = true;
+            joining3 = true;
+            joining4 = true;
+            joining5 = true;
+            joining6 = true;
+            all = true;
+        }
+    }
+
+    hashCode = function(s) {
+        var h = 0, l = s.length, i = 0;
+        if ( l > 0 )
+          while (i < l)
+            h = (h << 5) - h + s.charCodeAt(i++) | 0;
+        return h;
+      };
 
     // Variables
     var id = Math.round(Math.random()); // Generate a unique ID
@@ -817,7 +843,7 @@ $(function(){
     document.getElementById("vote6").addEventListener("click", vote6);
 
     function vote1(){
-        if(joining1 != true && (joining2 == true || joining3 == true || joining4 == true || joining5 == true || joining6 == true)){
+        if((joining1 != true && (joining2 == true || joining3 == true || joining4 == true || joining5 == true || joining6 == true )) || all == true){
             totalVote1 += 1;
             socket.emit('voting', totalVote1);
             document.getElementById("like1").innerHTML = totalVote1;
@@ -881,7 +907,7 @@ $(function(){
     });
 
     function vote2(){
-        if(joining2 != true && (joining6 == true || joining3 == true || joining4 == true || joining5 == true || joining1 == true)){
+        if((joining2 != true && (joining6 == true || joining3 == true || joining4 == true || joining5 == true || joining1 == true)) || all == true){
             totalVote2 += 1;
             socket.emit('voting2', totalVote2);
             document.getElementById("like2").innerHTML = totalVote2;
@@ -891,7 +917,7 @@ $(function(){
     }
 
     function vote3(){
-        if(joining3 != true && (joining2 == true || joining6 == true || joining4 == true || joining5 == true || joining1 == true)){
+        if((joining3 != true && (joining2 == true || joining6 == true || joining4 == true || joining5 == true || joining1 == true)) || all == true){
             totalVote3 += 1;
             socket.emit('voting3', totalVote3);
             document.getElementById("like3").innerHTML = totalVote3;
@@ -901,7 +927,7 @@ $(function(){
     }
 
     function vote4(){
-        if(joining4 != true && (joining2 == true || joining3 == true || joining6 == true || joining5 == true || joining1 == true)){
+        if((joining4 != true && (joining2 == true || joining3 == true || joining6 == true || joining5 == true || joining1 == true)) || all == true){
             totalVote4 += 1;
             socket.emit('voting4', totalVote4);
             document.getElementById("like4").innerHTML = totalVote4;
@@ -911,7 +937,7 @@ $(function(){
     }
 
     function vote5(){
-        if(joining5 != true && (joining2 == true || joining3 == true || joining4 == true || joining6 == true || joining1 == true)){
+        if((joining5 != true && (joining2 == true || joining3 == true || joining4 == true || joining6 == true || joining1 == true)) || all == true){
             totalVote5 += 1;
             socket.emit('voting5', totalVote5);
             document.getElementById("like5").innerHTML = totalVote5;
@@ -920,7 +946,7 @@ $(function(){
         }
     }
     function vote6(){
-        if(joining6 != true && (joining2 == true || joining3 == true || joining4 == true || joining5 == true || joining1 == true)){
+        if((joining6 != true && (joining2 == true || joining3 == true || joining4 == true || joining5 == true || joining1 == true)) || all == true){
             totalVote6 += 1;
             socket.emit('voting6', totalVote6);
             document.getElementById("like6").innerHTML = totalVote6;
