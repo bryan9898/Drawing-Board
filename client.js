@@ -1064,8 +1064,4 @@ $chat6.keyup(function(e){
         clients[data.id] = data;
         clients[data.id].updated = $.now();
     });
-
-
-
-
 });
