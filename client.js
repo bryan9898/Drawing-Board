@@ -1,7 +1,7 @@
 $(function(){
     
     // Configuration
-    var url = '35.197.146.101:80'; // URL of your webserver
+    var url = '35.197.146.101:8081'; // URL of your webserver
     //var url = '192.168.1.9:8080';
     var line_thickness = 4;
     var line_colour = "blue";
